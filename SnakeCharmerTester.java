@@ -6,7 +6,9 @@
 /*     */ import java.awt.geom.Ellipse2D;
 /*     */ import java.awt.geom.GeneralPath;
 /*     */ import java.awt.geom.Rectangle2D;
+import java.io.File;
 /*     */ import java.util.Arrays;
+import java.util.Scanner;
 /*     */ 
 /*     */ public class SnakeCharmerTester extends MarathonVis {
 /*     */   private static final int minSize = 7;
@@ -241,29 +243,10 @@
 /*     */   }
 /*     */   
 /*     */   private String callSolution() throws Exception {
-/* 238 */     writeLine(this.size);
-/* 239 */     writeLine(this.numValues);
-/* 240 */     writeLine(this.snake);
-/* 241 */     flush();
-/* 242 */     if (!isReadActive())
-/* 242 */       return null; 
-/* 244 */     startTime();
-/* 245 */     int n = readLineToInt(-1);
-/* 246 */     if (n < 0) {
-/* 247 */       setErrorMessage("Invalid number of moves: " + getLastLineRead());
-/* 248 */       return null;
-/*     */     } 
-/* 250 */     char[] ret = new char[n];
-/* 251 */     for (int i = 0; i < ret.length; i++) {
-/* 252 */       String s = readLine();
-/* 253 */       if (s.length() != 1) {
-/* 254 */         setErrorMessage("Invalid return in line " + (i + 1) + " : " + getLastLineRead());
-/* 255 */         return null;
-/*     */       } 
-/* 257 */       ret[i] = s.charAt(0);
-/*     */     } 
-/* 259 */     stopTime();
-/* 260 */     return new String(ret);
+/* 238 */   Scanner sc = new Scanner(System.in);//inilisasi input  
+            sc = new Scanner(new File("output.txt"));//scan file txt untuk input
+            String ret= sc.next();
+            return new String(ret);
 /*     */   }
 /*     */   
 /*     */   public static void main(String[] args) {
