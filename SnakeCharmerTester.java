@@ -226,7 +226,7 @@
 /* 218 */       setDefaultSize(30);
 /* 220 */       addInfo("Seed TES", Long.valueOf(this.seed));
 /* 221 */       addInfoBreak();
-/* 222 */       addInfo("Size N", Integer.valueOf(this.size));
+/* 222 */       addInfo("Size of Board", Integer.valueOf(this.size));
 /* 223 */       addInfo("Values V", Integer.valueOf(this.numValues));
 /* 224 */       addInfoBreak();
 /* 225 */       addInfo("Score", "-");

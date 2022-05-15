@@ -3,13 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 /**
  *
@@ -17,7 +34,7 @@ import java.util.Scanner;
  */
 public class ProifML {
 //value=v^(m+1)
-  public static void main(String[]args){ //method main
+  public static void main(String[]args) throws IOException{ //method main
            	Scanner sc = new Scanner(System.in);//inilisasi input
    		int loop = sc.nextInt();//input untuk melakukan seberapa banyak iterasi yg diperlukan
    		Random init = new Random();//inilisasi variabel random untuk melakukan random keseluruhan
@@ -27,6 +44,8 @@ public class ProifML {
                 int fitness_res=0;//hasil akhir fitness yang nanti akan dibandingkan
                 int row=0;//baris dan kolom dari board yg pastinya akar dari board
                 int target_res=0;//menyimpan hasil paling optimal
+                int rhptemp=0;
+                String best_chromosome="";
                 for (int ct=1;ct<=loop;ct++) {//for sebanyak loop kali
     		long seed = init.nextLong();//inisialisasi seed
 	        Random gen = new Random(seed);//seed dimasukan kedalam random agar mempunyai patokan
@@ -67,33 +86,49 @@ public class ProifML {
                 SnakeCharmer hp = new SnakeCharmer(gen,totalGeneration,maxPopulationSize,elitismPct, crossoverRate,mutationRate, listOfItems, board,secVal);//memanggil kelas hikari untuk menjalankan algoritma genetik
 	        Individual rhp = hp.run();//memanggil kelas run untuk menjalankan algoritma genetik isinya di masukan ke individu
                
-                
+                if(rhptemp<rhp.fitness){
+                    best_chromosome=rhp.chromosome;
+                    rhptemp=rhp.fitness;
+                }
                 final_chromosome=hp.final_res.chromosome;//menyimpan string chromosome yg mempunyai fitness terbesar
                 seed_ans=seed;//menyimpan seed yg mempunyai fitness terbesar
                 
               
                 System.out.printf("\n %2d: Total = %d Seed: %d \n"+rhp.chromosome,ct,rhp.fitness,seed);//print iterasi fittness dan persenan fitness dengan target
 
+                
                 }
+                
                //************************************************************
                  //BAGIAN OUTPUT TIDAK DIPAKAI DI BAGIAN INI
                //************************************************************                 
-//                StringBuilder sb = new StringBuilder(final_chromosome);//string builder untuk menyambungkan string dengan karakter baru
-//                int leng=final_chromosome.length();//variabel untuk menyimpan panjang kromosome
-//                for(int i=0;i<leng;i+=row+1){//iterasi yg dilakukan untuk merapihkan string dengan spasi
-//                      sb.insert(i, " ");//setiap akhir dari baris ditambahkan spasi
-//                        leng=leng+1;//leng bertambah dengan adanya karakter baru
-//                   }
-//                final_chromosome=sb.toString();//ubah format string builder ke string
-//
-//                try {  //handle untuk file output txt
-//                FileWriter myWriter = new FileWriter("output.txt");//scan untuk write file output.txt
-//                myWriter.write("result : \n"+ final_chromosome.replaceAll("\\s+","\n")+"\n"+"\n"+"Fitness : "+(1.0*fitness_res/target_res)+"\n"+"Total cahaya maksimal : "+target_res+"\n"+"Jumlah Cahaya : "+1.0*fitness_res+"\n"+"Seed : "+seed_ans);//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
-//                myWriter.close();//akhiri write dari file output.txt
-//                } 
-//                 catch (IOException e) {//jika tidak ada file output.txt
-//                System.out.println("An error occurred.");//print errot
-//                e.printStackTrace();
-//                }         
-}
+                //write output file
+                try {  //handle untuk file output txt
+                FileWriter myWriter = new FileWriter("output.txt");//scan untuk write file output.txt
+                myWriter.write(best_chromosome);//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
+                myWriter.close();//akhiri write dari file output.txt
+                } 
+                 catch (IOException e) {//jika tidak ada file output.txt
+                System.out.println("An error occurred.");//print errot
+                e.printStackTrace();
+                 }
+                
+                //masukin ke zip
+               Path myFilePath = Paths.get("output.txt");
+
+                Path zipFilePath = Paths.get("SnakeCharmer.jar");
+                try( 
+                    FileSystem fs = FileSystems.newFileSystem(zipFilePath)
+                   )
+                {
+                    Path fileInsideZipPath = fs.getPath("/output.txt");
+                    Files.delete(fileInsideZipPath);
+                    Files.copy(myFilePath, fileInsideZipPath);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+  
+  }
+                 
 }
