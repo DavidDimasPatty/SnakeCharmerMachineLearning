@@ -43,7 +43,7 @@ public class BoardRule {
                              String [] move_1= {"D","U","L","R"};
                              String temps=move_1[this.MyRand.nextInt(move_1.length)];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==10){
+                             if(iter==50){
                                      break;
                                  }
                              iter++;
@@ -89,7 +89,7 @@ public class BoardRule {
                              String temps=move_1[this.MyRand.nextInt(move_1.length)];
                              check=changeVariable(tempx,tempy,snake,temps,row);
                              //System.out.println(temps+"d");
-                            if(iter==10){
+                            if(iter==50){
                                      break;
                                  }
                              iter++;
@@ -133,7 +133,7 @@ public class BoardRule {
                              String [] move_1= {"D","U","L","R"};
                              String temps=move_1[this.MyRand.nextInt(move_1.length)];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==10){
+                             if(iter==50){
                                      break;
                                  }
                              iter++;
@@ -177,7 +177,7 @@ public class BoardRule {
                              String [] move_1= {"D","U","L","R"};
                              String temps=move_1[this.MyRand.nextInt(move_1.length)];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==10){
+                             if(iter==50){
                                      break;
                                  }
                              iter++;
@@ -216,6 +216,7 @@ public class BoardRule {
         
          }
          if(S.length()<board){
+             //System.out.println(S.length());
              for(int k=S.length();k<board;k++){
                String [] move_1= {"D","U","L","R"};
                String temps=move_1[this.MyRand.nextInt(move_1.length)];
@@ -306,14 +307,14 @@ public class BoardRule {
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
-                        score=score-10000;
+                        score=score-100;
                         break;
                        // return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                  score=score-10000;
+                  score=score-100;
                         break;
                  //   return score;
                 }
@@ -327,14 +328,14 @@ public class BoardRule {
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                    }
                     else{
-                       score=score-10000;
+                       score=score-100;
                         break;
                     //    return score;
                    }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                score=score-10000;
+                score=score-100;
                         break;
                   ///  return score;
                 }
@@ -348,7 +349,7 @@ public class BoardRule {
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
-                        score=score-10000;
+                        score=score-100;
                         break;
                      //   return score;
                     }
@@ -356,7 +357,7 @@ public class BoardRule {
                      }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-10000;
+                    score=score-100;
                         break;
                     //return score;
                 }
@@ -370,21 +371,21 @@ public class BoardRule {
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
-                     score=score-10000;
+                     score=score-100;
                         break;
                      //    return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                   score=score-10000;
+                   score=score-100;
                         break;
                    //  return score;
                 }
                 
             }
             
-            score=addWeight(listOfItems,snake,chromosome,headx,heady,secVal);
+            score=score+addWeight(listOfItems,snake,chromosome,headx,heady,secVal);
             
             //System.out.println(score);
             return score;
