@@ -21,47 +21,270 @@ public class BoardRule {
      public String Move(Random MyRand,int board,int i,ArrayList<Item> listOfItems){//method untuk menambah lampu
          String S="";//string kosong yg digunakan untuk field chromosome
          int row=(int)Math.sqrt(board);
+         
          String [] move= {"U","D","L","R"};
          int x=this.MyRand.nextInt(row-1);
          int y=this.MyRand.nextInt(row-1);
+         int tempx=x;
+         int tempy=y;
+         int [][] snake=new int [row][row];
+         snake [tempx][tempy]=1;
          S=S+x+y;
          String temp="";
          
          for(int k = 1; k <= board-1; k++)//untuk setiap kotak
 	{       
-                if(k==1){
                 String ran=move[this.MyRand.nextInt(move.length)];
-                S=S+ran;
-                temp=ran;
+                boolean check=false; 
+                if(ran.equals("U")){
+                    if(tempy-1>row ||tempy-1<0||snake[tempx][tempy-1]==1 ){
+                        int iter=0;
+                        while (check==false){
+                             String [] move_1= {"D","U","L","R"};
+                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                             check=changeVariable(tempx,tempy,snake,temps,row);
+                             if(iter==10){
+                                     break;
+                                 }
+                             iter++;
+                             if(check!=false){
+                                 if(temps.equals("U")){
+                                     tempy=tempy-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("L")){
+                                     tempx=tempx-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("R")){
+                                     tempx=tempx+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("D")){
+                                     tempy=tempy+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                break;
+                             }
+                        }     
+                    }
+                    else{
+                        S=S+ran;
+                        tempy=tempy-1;
+                        snake[tempx][tempy]=1;
+                         }
+                 
                 }
-                else{
-                    if(temp.equals("U")){
-                         String [] move_1= {"U","L","R"};
-                         String ran=move_1[this.MyRand.nextInt(move_1.length)];
-                         S=S+ran;
-                         temp=ran;
+                
+                
+                 else if(temp.equals("D")){
+                    if( tempy+1>row ||tempy+1<0 || snake[tempx][tempy+1]==1 ){
+                        int iter=0;
+                        while (check==false){
+                             String [] move_1= {"D","U","L","R"};
+                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                             check=changeVariable(tempx,tempy,snake,temps,row);
+                             //System.out.println(temps+"d");
+                            if(iter==10){
+                                     break;
+                                 }
+                             iter++;
+                             if(check!=false){
+                                 if(temps.equals("U")){
+                                     tempy=tempy-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("L")){
+                                     tempx=tempx-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("R")){
+                                     tempx=tempx+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("D")){
+                                     tempy=tempy+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                break;
+                             }
+                        }     
                     }
-                    else if(temp.equals("D")){
-                        String [] move_1= {"D","L","R"};
-                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                    else{
                         S=S+ran;
-                        temp=ran;
+                        tempy=tempy+1;
+                        snake[tempx][tempy]=1;
                     }
-                    else if(temp.equals("L")){
-                        String [] move_1= {"U","D","L"};
-                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                 
+                 }
+                 
+                 else if(temp.equals("L")){
+                    if(tempx-1>row ||tempx-1<0 ||snake[tempx-1][tempy]==1 ){
+                        int iter=0;
+                        while (check==false){
+                             String [] move_1= {"D","U","L","R"};
+                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                             check=changeVariable(tempx,tempy,snake,temps,row);
+                             if(iter==10){
+                                     break;
+                                 }
+                             iter++;
+                             if(check!=false){
+                                 if(temps.equals("U")){
+                                     tempy=tempy-1;
+                                  snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("L")){
+                                     tempx=tempx-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("R")){
+                                     tempx=tempx+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("D")){
+                                     tempy=tempy+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                break;
+                             }
+                        }     
+                    }
+                    else{
                         S=S+ran;
-                        temp=ran;
+                        tempx=tempx-1;
+                        snake[tempx][tempy]=1;
                     }
-                    else if(temp.equals("R")){
-                        String [] move_1= {"U","D","R"};
-                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                 
+                 }
+                 
+                 else if(temp.equals("R")){
+                    if(tempx+1>row ||tempx+1<0 ||snake[tempx+1][tempy]==1){
+                       int iter=0;
+                        while (check==false){
+                             String [] move_1= {"D","U","L","R"};
+                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                             check=changeVariable(tempx,tempy,snake,temps,row);
+                             if(iter==10){
+                                     break;
+                                 }
+                             iter++;
+                             if(check!=false){
+                                 if(temps.equals("U")){
+                                     tempy=tempy-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("L")){
+                                     tempx=tempx-1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("R")){
+                                     tempx=tempx+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                 else if(temps.equals("D")){
+                                     tempy=tempy+1;
+                                     snake[tempx][tempy]=1;
+                                     S=S+temps;
+                                 }
+                                break;
+                             }
+                        }     
+                    }
+                    else{
                         S=S+ran;
-                        temp=ran;
+                        tempx=tempx+1;
+                        snake[tempx][tempy]=1;
                     }
-                }
+                 
+                 }
+        
+         }
+         if(S.length()<board){
+             for(int k=S.length();k<board;k++){
+               String [] move_1= {"D","U","L","R"};
+               String temps=move_1[this.MyRand.nextInt(move_1.length)];
+               S=S+temps;
+             }
          }
          return S;//kembalikan chromosome
+     }
+     
+     public boolean changeVariable(int x,int y,int [][]arr,String s,int row){
+         boolean res=true;
+         if(s.equals("U")){
+             y=y-1;
+             try{
+              if(y>row ||y<0||arr[x][y]==1){
+                 return false;
+             }
+              if (arr[x][y]==0){
+                 return res;
+             }
+             }
+             catch(ArrayIndexOutOfBoundsException exception){
+               return false;
+             }
+             
+         }
+         if(s.equals("D")){
+            y=y+1;
+             try{
+              if(y>row ||y<0||arr[x][y]==1){
+                 return false;
+             }
+              if (arr[x][y]==0){
+                 return res;
+             }
+             }
+             catch(ArrayIndexOutOfBoundsException exception){
+               return false;
+             }
+         }
+         if(s.equals("L")){
+          x=x-1;
+             try{
+              if(x>row ||x<0||arr[x][y]==1){
+                 return false;
+             }
+              if (arr[x][y]==0){
+                 return res;
+             }
+             }
+             catch(ArrayIndexOutOfBoundsException exception){
+               return false;
+             }
+         }
+         if(s.equals("R")){
+          x=x+1;
+             try{
+              if(x>row ||x<0||arr[x][y]==1){
+                 return false;
+             }
+              if (arr[x][y]==0){
+                 return res;
+             }
+             }
+             catch(ArrayIndexOutOfBoundsException exception){
+               return false;
+             }
+         }
+         return res;
      }
      
        
@@ -78,7 +301,7 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("U")){
                     
                     headxtemp=headxtemp;
-                    headytemp=headytemp-row;
+                    headytemp=headytemp-1;
                     if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
@@ -99,7 +322,7 @@ public class BoardRule {
                 try{
                 if(Character.toString(chromosome.charAt(i)).equals("D")){
                     headxtemp=headxtemp;
-                    headytemp=headytemp+row;
+                    headytemp=headytemp+1;
                    if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                    }
