@@ -83,8 +83,9 @@ import java.util.Scanner;
 /*  77 */         return getErrorScore(); 
 /*  78 */       return fatalError();
 /*     */     } 
-/*  81 */     int x = this.size / 2;
-/*  82 */     int y = this.size / 2;
+/*  81 */     int x = Integer.parseInt(Character.toString(this.solution.charAt(0)));
+/*  82 */     int y = Integer.parseInt(Character.toString(this.solution.charAt(1)));
+              this.solution=this.solution.substring(2, this.solution.length());
 /*  83 */     this.grid[y][x] = this.snake.charAt(this.solution.length());
 /*     */     int i;
 /*  84 */     for (i = 0; i < this.solution.length(); i++) {
@@ -104,7 +105,7 @@ import java.util.Scanner;
 /*  91 */         return fatalError("You stepped out of grid bounds at move " + (i + 1)); 
 /*  92 */       if (this.grid[y][x] != '.')
 /*  92 */         return fatalError("You've hit yourself at move " + (i + 1)); 
-/*  93 */       this.grid[y][x] = this.snake.charAt(this.solution.length() - i + 1);
+/*  93 */       this.grid[y][x] = this.snake.charAt(this.solution.length() - i );
 /*     */     } 
 /*  96 */     if (this.debug) {
 /*  97 */       System.out.println("Your moves: " + this.solution);
@@ -114,6 +115,7 @@ import java.util.Scanner;
 /* 102 */         System.out.println();
 /*     */       } 
 /*     */     } 
+             //ngitung score
 /* 107 */     int score = 0;
 /* 108 */     int[] cnt = new int[5];
 /* 109 */     for (y = 0; y < this.size; y++) {

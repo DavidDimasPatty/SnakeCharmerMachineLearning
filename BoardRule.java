@@ -21,15 +21,46 @@ public class BoardRule {
      public String Move(Random MyRand,int board,int i,ArrayList<Item> listOfItems){//method untuk menambah lampu
          String S="";//string kosong yg digunakan untuk field chromosome
          int row=(int)Math.sqrt(board);
-         String [] move= {"U","B","L","R"};
+         String [] move= {"U","D","L","R"};
          int x=this.MyRand.nextInt(row-1);
          int y=this.MyRand.nextInt(row-1);
          S=S+x+y;
+         String temp="";
          
          for(int k = 1; k <= board-1; k++)//untuk setiap kotak
-	{
-                S=S+move[this.MyRand.nextInt(move.length)];
-        }
+	{       
+                if(k==1){
+                String ran=move[this.MyRand.nextInt(move.length)];
+                S=S+ran;
+                temp=ran;
+                }
+                else{
+                    if(temp.equals("U")){
+                         String [] move_1= {"U","L","R"};
+                         String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                         S=S+ran;
+                         temp=ran;
+                    }
+                    else if(temp.equals("D")){
+                        String [] move_1= {"D","L","R"};
+                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                        S=S+ran;
+                        temp=ran;
+                    }
+                    else if(temp.equals("L")){
+                        String [] move_1= {"U","D","L"};
+                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                        S=S+ran;
+                        temp=ran;
+                    }
+                    else if(temp.equals("R")){
+                        String [] move_1= {"U","D","R"};
+                        String ran=move_1[this.MyRand.nextInt(move_1.length)];
+                        S=S+ran;
+                        temp=ran;
+                    }
+                }
+         }
          return S;//kembalikan chromosome
      }
      
@@ -48,33 +79,41 @@ public class BoardRule {
                     
                     headxtemp=headxtemp;
                     headytemp=headytemp-row;
-                    if(snake[headxtemp][headytemp-row]==0){
-                        snake[headxtemp][headytemp-row]=listOfItems.get(i-1).value;
+                    if(snake[headxtemp][headytemp]==0){
+                        snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
                         score=score-10000;
+                        break;
+                       // return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-10000;
+                  score=score-10000;
+                        break;
+                 //   return score;
                 }
                 
                 //bot
                 try{
-                if(Character.toString(chromosome.charAt(i)).equals("B")){
+                if(Character.toString(chromosome.charAt(i)).equals("D")){
                     headxtemp=headxtemp;
                     headytemp=headytemp+row;
-                   if(snake[headxtemp][headytemp-row]==0){
-                        snake[headxtemp][headytemp-row]=listOfItems.get(i-1).value;
+                   if(snake[headxtemp][headytemp]==0){
+                        snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                    }
                     else{
-                        score=score-10000;
-                    }
+                       score=score-10000;
+                        break;
+                    //    return score;
+                   }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-10000;
+                score=score-10000;
+                        break;
+                  ///  return score;
                 }
                 
                 //left
@@ -82,17 +121,21 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("L")){
                     headxtemp=headxtemp-1;
                     headytemp=headytemp;                  
-                    if(snake[headxtemp][headytemp-row]==0){
-                        snake[headxtemp][headytemp-row]=listOfItems.get(i-1).value;
+                    if(snake[headxtemp][headytemp]==0){
+                        snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
                         score=score-10000;
+                        break;
+                     //   return score;
                     }
                    
                      }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
                     score=score-10000;
+                        break;
+                    //return score;
                 }
                 
                 //right
@@ -100,16 +143,20 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("R")){
                     headxtemp=headxtemp+1;
                     headytemp=headytemp;
-                    if(snake[headxtemp][headytemp-row]==0){
-                        snake[headxtemp][headytemp-row]=listOfItems.get(i-1).value;
+                    if(snake[headxtemp][headytemp]==0){
+                        snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                     }
                     else{
-                         score=score-10000;
+                     score=score-10000;
+                        break;
+                     //    return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-10000;
+                   score=score-10000;
+                        break;
+                   //  return score;
                 }
                 
             }
@@ -158,7 +205,7 @@ public class BoardRule {
                     }
                 }
                     
-                if(Character.toString(chromosome.charAt(i)).equals("B")){
+                if(Character.toString(chromosome.charAt(i)).equals("D")){
                     try{
                     if(snake[headxtemp][headytemp-row]==snake[headxtemp][headytemp])//atas
                         match++;
