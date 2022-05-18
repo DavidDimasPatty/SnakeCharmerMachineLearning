@@ -270,6 +270,7 @@ public class BoardRule {
             snake [headx][heady]=listOfItems.get(0).value;
             int headxtemp=headx;
             int headytemp=heady;
+            boolean rule=true;
             
             for(int i=2;i<chromosome.length();i++){
                 //up
@@ -278,20 +279,25 @@ public class BoardRule {
                     
                     headxtemp=headxtemp;
                     headytemp=headytemp-1;
-                    if(snake[headxtemp][headytemp]==0){
+                    if(rule==false){
+                        score=score-1000;
+                        break;
+                    }
+                    else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                          score=score+100;
                     }
                     else{
+                        rule=false;
                         score=score-1000;
-                        break;
+                        
                        // return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                  score=score-1000;
-                        break;
+                        rule=false;
+                        score=score-1000;
                  //   return score;
                 }
                 
@@ -300,20 +306,24 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("D")){
                     headxtemp=headxtemp;
                     headytemp=headytemp+1;
-                   if(snake[headxtemp][headytemp]==0){
+                    if(rule==false){
+                        score=score-1000;
+                        break;
+                    }
+                    else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                          score=score+100;
                    }
                     else{
-                       score=score-1000;
-                        break;
+                       rule=false;
+                        score=score-1000;
                     //    return score;
                    }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                score=score-1000;
-                        break;
+                rule=false;
+                        score=score-1000;
                   ///  return score;
                 }
                 
@@ -322,13 +332,17 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("L")){
                     headxtemp=headxtemp-1;
                     headytemp=headytemp;                  
-                    if(snake[headxtemp][headytemp]==0){
+                     if(rule==false){
+                        score=score-1000;
+                        break;
+                     }
+                     else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                          score=score+100;
                     }
                     else{
+                        rule=false;
                         score=score-1000;
-                        break;
                      //   return score;
                     }
                    
@@ -345,20 +359,24 @@ public class BoardRule {
                 if(Character.toString(chromosome.charAt(i)).equals("R")){
                     headxtemp=headxtemp+1;
                     headytemp=headytemp;
-                    if(snake[headxtemp][headytemp]==0){
+                     if(rule==false){
+                        score=score-1000;
+                        break;
+                     }
+                     else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
                         score=score+100;
                     }
                     else{
-                     score=score-1000;
-                        break;
+                     rule=false;
+                        score=score-1000;
                      //    return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                   score=score-1000;
-                        break;
+                   rule=false;
+                        score=score-1000;
                    //  return score;
                 }
                 

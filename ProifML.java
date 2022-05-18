@@ -105,7 +105,8 @@ public class ProifML {
                 //write output file
                 try {  //handle untuk file output txt
                 FileWriter myWriter = new FileWriter("output.txt");//scan untuk write file output.txt
-                myWriter.write(best_chromosome);//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
+                myWriter.write(best_chromosome+"\n");//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
+                myWriter.write(Integer.toString(rhptemp));
                 myWriter.close();//akhiri write dari file output.txt
                 } 
                  catch (IOException e) {//jika tidak ada file output.txt

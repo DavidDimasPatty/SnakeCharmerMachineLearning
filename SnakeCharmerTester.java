@@ -40,6 +40,7 @@ import java.util.Scanner;
 /*     */   private char[][] grid;
 /*     */   
 /*     */   private String solution;
+            private String Score="0";
             
             private int headx;
             private int heady;
@@ -238,7 +239,7 @@ import java.util.Scanner;
 /* 222 */       addInfo("Size of Board", Integer.valueOf(this.size));
 /* 223 */       addInfo("Values V", Integer.valueOf(this.numValues));
 /* 224 */       addInfoBreak();
-/* 225 */       addInfo("Score", "-");
+/* 225 */       addInfo("Score", Integer.valueOf(Integer.parseInt(this.Score)));
 /* 226 */       addInfoBreak();
 /* 227 */       addInfo("Time", "-");
 /* 228 */       addInfoBreak();
@@ -253,6 +254,8 @@ import java.util.Scanner;
 /* 238 */   Scanner sc = new Scanner(System.in);//inilisasi input  
             sc = new Scanner(new File("output.txt"));//scan file txt untuk input
             String ret= sc.next();
+            this.Score=sc.next();
+            System.out.println(this.Score);
             return new String(ret);
 /*     */   }
 /*     */   
