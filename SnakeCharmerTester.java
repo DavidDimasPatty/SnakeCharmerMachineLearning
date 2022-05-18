@@ -40,6 +40,9 @@ import java.util.Scanner;
 /*     */   private char[][] grid;
 /*     */   
 /*     */   private String solution;
+            
+            private int headx;
+            private int heady;
 /*     */   
 /*     */   protected void generate() {
 /*  34 */     this.size = randomInt(0, 21) * 2 + 7;
@@ -85,6 +88,8 @@ import java.util.Scanner;
 /*     */     } 
 /*  81 */     int x = Integer.parseInt(Character.toString(this.solution.charAt(0)));
 /*  82 */     int y = Integer.parseInt(Character.toString(this.solution.charAt(1)));
+               this.headx=x;
+               this.heady=y;
               this.solution=this.solution.substring(2, this.solution.length());
 /*  83 */     this.grid[y][x] = this.snake.charAt(this.solution.length());
 /*     */     int i;
@@ -159,8 +164,8 @@ import java.util.Scanner;
 /*     */       } 
 /*     */     } 
 /* 148 */     if (this.solution != null) {
-/* 149 */       int x = this.size / 2;
-/* 150 */       int j = this.size / 2;
+/* 149 */       int x = headx;
+/*  82 */       int j = heady;
 /* 151 */       g.setColor(Color.black);
 /* 152 */       g.setStroke(new BasicStroke(0.05F, 1, 1));
 /* 153 */       g.drawRect(x, j, 1, 1);
