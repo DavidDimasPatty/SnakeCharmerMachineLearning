@@ -280,16 +280,17 @@ public class BoardRule {
                     headytemp=headytemp-1;
                     if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
+                         score=score+100;
                     }
                     else{
-                        score=score-100;
+                        score=score-1000;
                         break;
                        // return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                  score=score-100;
+                  score=score-1000;
                         break;
                  //   return score;
                 }
@@ -301,16 +302,17 @@ public class BoardRule {
                     headytemp=headytemp+1;
                    if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
+                         score=score+100;
                    }
                     else{
-                       score=score-100;
+                       score=score-1000;
                         break;
                     //    return score;
                    }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                score=score-100;
+                score=score-1000;
                         break;
                   ///  return score;
                 }
@@ -322,9 +324,10 @@ public class BoardRule {
                     headytemp=headytemp;                  
                     if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
+                         score=score+100;
                     }
                     else{
-                        score=score-100;
+                        score=score-1000;
                         break;
                      //   return score;
                     }
@@ -332,7 +335,7 @@ public class BoardRule {
                      }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-100;
+                    score=score-1000;
                         break;
                     //return score;
                 }
@@ -344,16 +347,17 @@ public class BoardRule {
                     headytemp=headytemp;
                     if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
+                        score=score+100;
                     }
                     else{
-                     score=score-100;
+                     score=score-1000;
                         break;
                      //    return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                   score=score-100;
+                   score=score-1000;
                         break;
                    //  return score;
                 }
