@@ -30,7 +30,6 @@ public class BoardRule {
          int [][] snake=new int [row][row];
          snake [tempx][tempy]=1;
          S=S+x+y;
-         String temp="";
          
          for(int k = 1; k <= board-1; k++)//untuk setiap kotak
 	{       
@@ -75,8 +74,8 @@ public class BoardRule {
                 }
                 
                 
-                 else if(temp.equals("D")){
-                    if( tempy+1>row ||tempy+1<0 || snake[tempx][tempy+1]==1 ){
+                 else if(ran.equals("D")){
+                    if( tempy+1>=row ||tempy+1<0 || snake[tempx][tempy+1]==1 ){
                          String [] move_1= {"U","L","R"};
                          for(int o=0;o<move_1.length;o++){    
                              String temps=move_1[o];
@@ -113,8 +112,8 @@ public class BoardRule {
                  
                  }
                  
-                 else if(temp.equals("L")){
-                    if(tempx-1>row ||tempx-1<0 ||snake[tempx-1][tempy]==1 ){
+                 else if(ran.equals("L")){
+                    if(tempx-1>=row ||tempx-1<0 ||snake[tempx-1][tempy]==1 ){
                          String [] move_1= {"D","U","R"};
                         for(int o=0;o<move_1.length;o++){  
                             
@@ -152,8 +151,8 @@ public class BoardRule {
                  
                  }
                  
-                 else if(temp.equals("R")){
-                    if(tempx+1>row ||tempx+1<0 ||snake[tempx+1][tempy]==1){
+                 else if(ran.equals("R")){
+                    if(tempx+1>=row ||tempx+1<0 ||snake[tempx+1][tempy]==1){
                         String [] move_1= {"U","L","D"};
                         for(int o=0;o<move_1.length;o++){    
                              String temps=move_1[o];
@@ -166,7 +165,7 @@ public class BoardRule {
                                      S=S+temps;
                                  }
                                  else if(temps.equals("U")){
-                                     tempy=tempy+1;
+                                     tempy=tempy-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
@@ -222,7 +221,7 @@ public class BoardRule {
          if(s.equals("D")){
             y=y+1;
              try{
-              if(y>row ||y<0||arr[x][y]==1){
+              if(y>=row ||y<0||arr[x][y]==1){
                  return false;
              }
               if (arr[x][y]==0){
@@ -250,7 +249,7 @@ public class BoardRule {
          if(s.equals("R")){
           x=x+1;
              try{
-              if(x>row ||x<0||arr[x][y]==1){
+              if(x>=row ||x<0||arr[x][y]==1){
                  return false;
              }
               if (arr[x][y]==0){
