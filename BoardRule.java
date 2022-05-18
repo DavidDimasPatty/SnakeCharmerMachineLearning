@@ -38,22 +38,13 @@ public class BoardRule {
                 boolean check=false; 
                 if(ran.equals("U")){
                     if(tempy-1>row ||tempy-1<0||snake[tempx][tempy-1]==1 ){
-                        int iter=0;
-                        while (check==false){
-                             String [] move_1= {"D","U","L","R"};
-                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                        String [] move_1= {"D","L","R"};
+                        for(int o=0;o<move_1.length;o++){    
+                             String temps=move_1[o];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==50){
-                                     break;
-                                 }
-                             iter++;
                              if(check!=false){
-                                 if(temps.equals("U")){
-                                     tempy=tempy-1;
-                                     snake[tempx][tempy]=1;
-                                     S=S+temps;
-                                 }
-                                 else if(temps.equals("L")){
+                                // System.out.print("masuk");
+                                 if(temps.equals("L")){
                                      tempx=tempx-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
@@ -70,6 +61,9 @@ public class BoardRule {
                                  }
                                 break;
                              }
+//                            if(o==move_1.length-1 && check==false){
+//                              board++;
+//                             }   
                         }     
                     }
                     else{
@@ -83,23 +77,13 @@ public class BoardRule {
                 
                  else if(temp.equals("D")){
                     if( tempy+1>row ||tempy+1<0 || snake[tempx][tempy+1]==1 ){
-                        int iter=0;
-                        while (check==false){
-                             String [] move_1= {"D","U","L","R"};
-                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                         String [] move_1= {"U","L","R"};
+                         for(int o=0;o<move_1.length;o++){    
+                             String temps=move_1[o];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             //System.out.println(temps+"d");
-                            if(iter==50){
-                                     break;
-                                 }
-                             iter++;
                              if(check!=false){
-                                 if(temps.equals("U")){
-                                     tempy=tempy-1;
-                                     snake[tempx][tempy]=1;
-                                     S=S+temps;
-                                 }
-                                 else if(temps.equals("L")){
+                             //    System.out.print("masuk");
+                                 if(temps.equals("L")){
                                      tempx=tempx-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
@@ -109,13 +93,16 @@ public class BoardRule {
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
-                                 else if(temps.equals("D")){
-                                     tempy=tempy+1;
+                                 else if(temps.equals("U")){
+                                     tempy=tempy-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
                                 break;
                              }
+//                             if(o==move_1.length-1 && check==false){
+//                              board++;
+//                             }
                         }     
                     }
                     else{
@@ -128,23 +115,15 @@ public class BoardRule {
                  
                  else if(temp.equals("L")){
                     if(tempx-1>row ||tempx-1<0 ||snake[tempx-1][tempy]==1 ){
-                        int iter=0;
-                        while (check==false){
-                             String [] move_1= {"D","U","L","R"};
-                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                         String [] move_1= {"D","U","R"};
+                        for(int o=0;o<move_1.length;o++){  
+                            
+                             String temps=move_1[o];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==50){
-                                     break;
-                                 }
-                             iter++;
                              if(check!=false){
+                          //  System.out.print("masuk");
                                  if(temps.equals("U")){
                                      tempy=tempy-1;
-                                  snake[tempx][tempy]=1;
-                                     S=S+temps;
-                                 }
-                                 else if(temps.equals("L")){
-                                     tempx=tempx-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
@@ -160,6 +139,9 @@ public class BoardRule {
                                  }
                                 break;
                              }
+//                             if(o==move_1.length-1 && check==false){
+//                              board++;
+//                             }
                         }     
                     }
                     else{
@@ -172,28 +154,19 @@ public class BoardRule {
                  
                  else if(temp.equals("R")){
                     if(tempx+1>row ||tempx+1<0 ||snake[tempx+1][tempy]==1){
-                       int iter=0;
-                        while (check==false){
-                             String [] move_1= {"D","U","L","R"};
-                             String temps=move_1[this.MyRand.nextInt(move_1.length)];
+                        String [] move_1= {"U","L","D"};
+                        for(int o=0;o<move_1.length;o++){    
+                             String temps=move_1[o];
                              check=changeVariable(tempx,tempy,snake,temps,row);
-                             if(iter==50){
-                                     break;
-                                 }
-                             iter++;
                              if(check!=false){
-                                 if(temps.equals("U")){
-                                     tempy=tempy-1;
-                                     snake[tempx][tempy]=1;
-                                     S=S+temps;
-                                 }
-                                 else if(temps.equals("L")){
+                           //      System.out.print("masuk");
+                                 if(temps.equals("L")){
                                      tempx=tempx-1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
-                                 else if(temps.equals("R")){
-                                     tempx=tempx+1;
+                                 else if(temps.equals("U")){
+                                     tempy=tempy+1;
                                      snake[tempx][tempy]=1;
                                      S=S+temps;
                                  }
@@ -204,6 +177,9 @@ public class BoardRule {
                                  }
                                 break;
                              }
+//                             if(o==move_1.length-1 && check==false){
+//                              board++;
+//                             }
                         }     
                     }
                     else{
@@ -427,6 +403,8 @@ public class BoardRule {
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
+                    headxtemp=headxtemp;
+                    headytemp=headytemp-1; 
                 }
                     
                 if(Character.toString(chromosome.charAt(i)).equals("D")){
@@ -455,6 +433,9 @@ public class BoardRule {
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
+                    headxtemp=headxtemp;
+                    headytemp=headytemp+1;                   
+                    
                     }
                 if(Character.toString(chromosome.charAt(i)).equals("L")){
                    try{
@@ -482,6 +463,9 @@ public class BoardRule {
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
+                    headxtemp=headxtemp-1;
+                    headytemp=headytemp;                   
+                    
                    }
                 if(Character.toString(chromosome.charAt(i)).equals("R")){
                     

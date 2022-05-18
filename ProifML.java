@@ -128,6 +128,14 @@ public class ProifML {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+                
+          //OPENING JAR
+         System.out.println();
+        System.out.println("Opening JAR");
+        String[] command = {"java", "-jar","SnakeCharmer.jar"};
+        ProcessBuilder builder = new ProcessBuilder(command);
+        Process p = builder.start();
+         
   
   }
                  
