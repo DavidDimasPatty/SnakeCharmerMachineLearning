@@ -30,7 +30,7 @@ import java.util.Scanner;
 /*     */   
 /*  19 */   private static final int[] dx = new int[] { 0, 1, -1 };
 /*     */   
-/*  20 */   private static final int[] dy = new int[] { -1, 1 };
+/*  20 */   private static final int[] dy = new int[] { 0,-1, 1 };
 /*     */   
 /*     */   private static final char empty = '.';
 /*     */   
