@@ -105,6 +105,7 @@ public class ProifML {
                 //write output file
                 try {  //handle untuk file output txt
                 FileWriter myWriter = new FileWriter("output.txt");//scan untuk write file output.txt
+                best_chromosome=finalCheck(best_chromosome,row*row);
                 myWriter.write(best_chromosome+"\n");//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
                 myWriter.write(Integer.toString(rhptemp));
                 myWriter.close();//akhiri write dari file output.txt
@@ -115,7 +116,7 @@ public class ProifML {
                  }
                 
                 //masukin ke zip
-               Path myFilePath = Paths.get("output.txt");
+               //Path myFilePath = Paths.get("output.txt");
 
                 // Path zipFilePath = Paths.get("SnakeCharmer.jar");
                 // try( 
@@ -140,5 +141,97 @@ public class ProifML {
          
   
   }
+
+  public String finalCheck(String s,int board){
+    int row=(int) Math.sqrt(board);
+    int [][] snake=new int [row][row];
+    int x= Integer.parseInt(Character.toString(s.charAt(0)));
+    int y= Integer.parseInt(Character.toString(s.charAt(1)));
+    int trim=0;
+
+    for (int i=2;i<s.length();i++){
+            try{
+                if(Character.toString(s.charAt(i)).equals("U")){
+                    
+                    y=y-1;
+                     if(snake[x][y]==0){
+                        snake[x][y]=1;
+                    }
+                    else{
+                        trim=i;
+                        break;
+                       // return score;
+                    }
+                }
+                }
+                catch(ArrayIndexOutOfBoundsException exception){
+                    trim=i;
+                    break;
+                }
+
+                try{
+                  if(Character.toString(s.charAt(i)).equals("D")){
+                      
+                      y=y+1;
+                       if(snake[x][y]==0){
+                          snake[x][y]=1;
+                      }
+                      else{
+                          trim=i;
+                          break;
+                         // return score;
+                      }
+                  }
+                  }
+                  catch(ArrayIndexOutOfBoundsException exception){
+                      trim=i;
+                      break;
+                  }
+                  
+                  try{
+                    if(Character.toString(s.charAt(i)).equals("L")){
+                        
+                        x=x-1;
+                         if(snake[x][y]==0){
+                            snake[x][y]=1;
+                        }
+                        else{
+                            trim=i;
+                            break;
+                           // return score;
+                        }
+                    }
+                    }
+                    catch(ArrayIndexOutOfBoundsException exception){
+                        trim=i;
+                        break;
+                    }
+
+                    try{
+                      if(Character.toString(s.charAt(i)).equals("R")){
+                          
+                          x=x+1;
+                           if(snake[x][y]==0){
+                              snake[x][y]=1;
+                          }
+                          else{
+                              trim=i;
+                              break;
+                             // return score;
+                          }
+                      }
+                      }
+                      catch(ArrayIndexOutOfBoundsException exception){
+                          trim=i;
+                          break;
+                      }
+                
+     }
+     if(trim!=0){
+       s=s.substring(0,trim);
+     }
+    return s;
+  }
+
                  
 }

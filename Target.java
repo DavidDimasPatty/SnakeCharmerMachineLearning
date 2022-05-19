@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Target {
      public ArrayList<Item> population;//
-    int Board;//banyak nya kotak di board
+     int Board;//banyak nya kotak di board
 
     public Target(ArrayList<Item> listOfItems,int Board,int secVal) {//konstruktor
 	this.population = new ArrayList<Item>();
