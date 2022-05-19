@@ -35,6 +35,7 @@ public class SnakeCharmerTester extends MarathonVis {
     private String Score = "0";
     private int headx;
     private int heady;
+    private String seed_ml="0";
 
     protected void generate() {
         size = randomInt(0, (maxSize - minSize) / 2) * 2 + minSize;
@@ -138,6 +139,7 @@ public class SnakeCharmerTester extends MarathonVis {
         }
         if (hasVis()) {
             addInfo("Score", Integer.valueOf(score));
+            addInfo("Seed", String.valueOf(this.seed_ml));
             addInfo("Time", String.valueOf(getRunTime()) + " ms");
             for (int c = 0; c < this.colors.length; c++) {
                 addInfo(this.colors[c], Integer.valueOf(cnt[c]));
@@ -235,8 +237,7 @@ public class SnakeCharmerTester extends MarathonVis {
             setInfoMaxDimension(15, 15);
             setContentRect(0, 0, size, size);
             setDefaultSize(30);
-
-            addInfo("Seed", seed);
+            addInfo("Seed", Long.parseLong(this.seed_ml));
             addInfoBreak();
             addInfo("Size N", size);
             addInfo("Values V", numValues);
@@ -258,6 +259,7 @@ public class SnakeCharmerTester extends MarathonVis {
         sc = new Scanner(new File("output.txt")); // scan file txt untuk input
         String ret = sc.next();
         this.Score = sc.next();
+        this.seed_ml=sc.next();
         System.out.println(this.Score);
         sc.close();
         return new String(ret);
