@@ -3,12 +3,15 @@ import java.awt.geom.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
+import java.util.Scanner;
 import com.topcoder.marathon.*;
+import java.io.FileNotFoundException;
 
 public class SnakeCharmerTester extends MarathonVis {
     //Ranges
-    private static final int minSize = 7, maxSize = 49;
+    
+   
+    private static  int minSize = 7, maxSize = 49;
     private static final int minNumValues = 2, maxNumValues = 8;
     private static final int minValue = 2;
 
@@ -38,6 +41,15 @@ public class SnakeCharmerTester extends MarathonVis {
     private String seed_ml="0";
 
     protected void generate() {
+        Scanner sc = new Scanner(System.in);//inilisasi input
+        try {//handle try jika ada file yg bernama input.txt
+            sc = new Scanner(new File("input.txt"));//scan file txt untuk input
+           this.minSize = sc.nextInt();//baris yg diperlukan untuk membangun board
+           this.maxSize = this.minSize*this.minSize;
+        } catch (FileNotFoundException e) { 
+            e.printStackTrace();
+        }
+
         size = randomInt(0, (maxSize - minSize) / 2) * 2 + minSize;
         numValues = randomInt(minNumValues, maxNumValues);
 
