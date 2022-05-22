@@ -138,7 +138,7 @@ public class SnakeCharmerTester extends MarathonVis {
             }
         }
         if (hasVis()) {
-            addInfo("Score", Integer.valueOf(score));
+            addInfo("Score", Integer.valueOf(this.Score));
             addInfo("Seed", String.valueOf(this.seed_ml));
             addInfo("Time", String.valueOf(getRunTime()) + " ms");
             for (int c = 0; c < this.colors.length; c++) {
