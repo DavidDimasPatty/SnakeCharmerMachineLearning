@@ -47,6 +47,7 @@ public class ProifML {
                 int rhptemp=0;
                 String snake="";
                 String best_chromosome="";
+                long best_seed=0;
                 for (int ct=1;ct<=loop;ct++) {//for sebanyak loop kali
     		long seed = init.nextLong();//inisialisasi seed
 	        Random gen = new Random(seed);//seed dimasukan kedalam random agar mempunyai patokan
@@ -90,6 +91,7 @@ public class ProifML {
                 if(rhptemp<rhp.fitness){
                     best_chromosome=rhp.chromosome;
                     rhptemp=rhp.fitness;
+                    best_seed=seed;
                 }
                 final_chromosome=hp.final_res.chromosome;//menyimpan string chromosome yg mempunyai fitness terbesar
                 seed_ans=seed;//menyimpan seed yg mempunyai fitness terbesar
@@ -109,7 +111,7 @@ public class ProifML {
                 best_chromosome=finalCheck(best_chromosome,row*row);
                 myWriter.write(best_chromosome+"\n");//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
                 myWriter.write(Integer.toString(rhptemp)+"\n");
-                myWriter.write(Long.toString(seed_ans)+"\n");
+                myWriter.write(Long.toString(best_seed)+"\n");
                 myWriter.write(snake);
                 myWriter.close();//akhiri write dari file output.txt
                 } 
