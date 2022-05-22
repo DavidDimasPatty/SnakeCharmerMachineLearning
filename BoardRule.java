@@ -426,6 +426,8 @@ public class BoardRule {
             
              for(int i=2;i<chromosome.length();i++){
                 int match=0;
+                int x=headx;
+                int y=heady;
                  
                 if(Character.toString(chromosome.charAt(i)).equals("U")){
                    try{
@@ -550,7 +552,10 @@ public class BoardRule {
                      
                     }
                 
-                total=total+(int)Math.pow(secVal, match+1);
+                total=total+(int)Math.pow(snake[x][y], match+1);
+                x=headxtemp;
+                y=headytemp;
+
             }
              
              
