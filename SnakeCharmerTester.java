@@ -108,7 +108,8 @@ public class SnakeCharmerTester extends MarathonVis {
             }
             if (!inGrid(y, x)) return fatalError("You stepped out of grid bounds at move " + (i + 1));
             if (this.grid[y][x] != '.') return fatalError("You've hit yourself at move " + (i + 1)); 
-            this.grid[y][x] = this.snake.charAt(this.solution.length() - i );
+            this.grid[y][x] = this.snake.charAt(this.snake.length() - (i+2) );
+            System.out.println(this.snake.charAt(this.snake.length() - (i+2) ));
         }
         if (this.debug) {
             System.out.println("Your moves: " + this.solution);
