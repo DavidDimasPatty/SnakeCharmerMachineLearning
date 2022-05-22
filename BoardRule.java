@@ -382,14 +382,43 @@ public class BoardRule {
                 
             }
             
-            score=score+addWeight(listOfItems,snake,chromosome,headx,heady,secVal);
+            score=score+addWeight(listOfItems,snake,chromosome,headx,heady,secVal,row*row);
             
             //System.out.println(score);
             return score;
         }
         
-         public int addWeight(ArrayList<Item> listOfItems,int [][] snake,String chromosome,int headx,int heady,int secVal){//method untuk punish lampu yang nabrak
-             int row=snake.length-1;
+         public int addWeight(ArrayList<Item> listOfItems,int [][] snake,String chromosome,int headx,int heady,int secVal,int size){//method untuk punish lampu yang nabrak
+           /*  int score = 0;
+            int[] cnt = new int[5];
+            int[] dx = {0,1,0,-1};
+            int[] dy = {-1,0,1,0};
+            for (heady = 0; heady <size; heady++) {
+            for (headx = 0; headx < size; headx++) {
+                
+                try {
+                    
+                    if (snake[heady][headx] != 0) {
+                        int m = 0;
+                        for (int dir = 0; dir < dx.length; dir++) {
+                            int x2 = headx + dy[dir];
+                            int y2 = heady + dx[dir];
+                            if ( snake[heady][headx] == snake[y2][x2])
+                            m++;
+                        }
+                        //this.matches[heady][headx] = m;
+                        cnt[m] = cnt[m] + 1;
+                        score += (int)Math.pow((snake[heady][headx] - 48), (m + 1));
+                    }
+    
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                }
+                
+            }
+        }
+        return score; */
+               int row=snake.length-1;
             
              int headxtemp=headx;
              int headytemp=heady;
@@ -525,7 +554,7 @@ public class BoardRule {
             }
              
              
-             return total;
+             return total; 
          }
          
           

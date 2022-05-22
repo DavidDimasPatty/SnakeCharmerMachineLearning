@@ -64,7 +64,7 @@ public class SnakeCharmerTester extends MarathonVis {
         for (int i = 0; i < size * size; i++) {
             sb.append((char) ('0' + randomInt(minValue, minValue + numValues - 1)));
         }
-        snake = sb.toString();
+        //snake = sb.toString();
 
         if (debug) {
             System.out.println("Grid Size N = " + size);
@@ -242,7 +242,7 @@ public class SnakeCharmerTester extends MarathonVis {
             addInfo("Size N", size);
             addInfo("Values V", numValues);
             addInfoBreak();
-            addInfo("Score", "-");
+            addInfo("Score",this.Score);
             addInfoBreak();
             addInfo("Time", "-");
             addInfoBreak();
@@ -260,6 +260,7 @@ public class SnakeCharmerTester extends MarathonVis {
         String ret = sc.next();
         this.Score = sc.next();
         this.seed_ml=sc.next();
+        this.snake=sc.next();
         System.out.println(this.Score);
         sc.close();
         return new String(ret);

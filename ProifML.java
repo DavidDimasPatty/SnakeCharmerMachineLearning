@@ -45,6 +45,7 @@ public class ProifML {
                 int row=0;//baris dan kolom dari board yg pastinya akar dari board
                 int target_res=0;//menyimpan hasil paling optimal
                 int rhptemp=0;
+                String snake="";
                 String best_chromosome="";
                 for (int ct=1;ct<=loop;ct++) {//for sebanyak loop kali
     		long seed = init.nextLong();//inisialisasi seed
@@ -59,7 +60,7 @@ public class ProifML {
                         row=maxCapacity;//variabel row diisi maxcapacity
                         board=maxCapacity*maxCapacity;//banyaknya kotak yg ada dalam puzzle
                         secVal = sc.nextInt();//section value setiap kotak
-                        String snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
+                        snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
                         
                         for (int i=0;i<board;i++) {//setiap kotak diisi value,weight, and condition
                              int value=Integer.parseInt(Character.toString(snake.charAt(i)));//semua kotak dianggap tidak mempunyai cahaya saat pertama kali
@@ -108,7 +109,8 @@ public class ProifML {
                 best_chromosome=finalCheck(best_chromosome,row*row);
                 myWriter.write(best_chromosome+"\n");//print chromosome yg sudah diganti jika ada spasi maka akan enter,fitness,persentase fitness,cahaya 
                 myWriter.write(Integer.toString(rhptemp)+"\n");
-                myWriter.write(Long.toString(seed_ans));
+                myWriter.write(Long.toString(seed_ans)+"\n");
+                myWriter.write(snake);
                 myWriter.close();//akhiri write dari file output.txt
                 } 
                  catch (IOException e) {//jika tidak ada file output.txt
