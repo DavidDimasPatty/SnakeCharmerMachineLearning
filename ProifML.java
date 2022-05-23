@@ -48,30 +48,34 @@ public class ProifML {
                 String snake="";
                 String best_chromosome="";
                 long best_seed=0;
-                for (int ct=1;ct<=loop;ct++) {//for sebanyak loop kali
-    		long seed = init.nextLong();//inisialisasi seed
-	        Random gen = new Random(seed);//seed dimasukan kedalam random agar mempunyai patokan
-	    	int board=0, totalGeneration=0, maxPopulationSize=0;// board ukuran puzzle, total generasi dari genetik, maksimum populasi yg dibuat
-	    	double crossoverRate=0.0, mutationRate=0.0, elitismPct=0.0;//persenan crossover,mutas,dan elitism
-                ArrayList<Item> listOfItems = new ArrayList<Item>();//array list yg berisi kelas item \
+                int board=0;
                 int secVal=0;
-	    	try {//handle try jika ada file yg bernama input.txt
-	        	sc = new Scanner(new File("input.txt"));//scan file txt untuk input
-	        	int maxCapacity = sc.nextInt();//baris yg diperlukan untuk membangun board
-                        row=maxCapacity;//variabel row diisi maxcapacity
-                        board=maxCapacity*maxCapacity;//banyaknya kotak yg ada dalam puzzle
-                        secVal = sc.nextInt();//section value setiap kotak
-                        snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
-                        
-                        for (int i=0;i<board;i++) {//setiap kotak diisi value,weight, and condition
-                             int value=Integer.parseInt(Character.toString(snake.charAt(i)));//semua kotak dianggap tidak mempunyai cahaya saat pertama kali
-                             listOfItems.add(new Item(value, 0,0));
-                          }
-                       
-                       
-	        } catch (FileNotFoundException e) { e.printStackTrace();}//handle jika tidak ada file yg bernama input.txt keluarkan errorr 
-	      
-                
+                ArrayList<Item> listOfItems = new ArrayList<Item>();//array list yg berisi kelas item \
+                try {//handle try jika ada file yg bernama input.txt
+                    sc = new Scanner(new File("input.txt"));//scan file txt untuk input
+                    int maxCapacity = sc.nextInt();//baris yg diperlukan untuk membangun board
+                            row=maxCapacity;//variabel row diisi maxcapacity
+                            board=maxCapacity*maxCapacity;//banyaknya kotak yg ada dalam puzzle
+                            secVal = sc.nextInt()+1;//section value setiap kotak
+                              for (int i=0;i<board;i++){
+                                snake=snake+Integer.toString(init.nextInt(secVal-1) + 2);
+                            }   
+                            System.out.print(snake);
+                            //snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
+                            
+                            for (int i=0;i<board;i++) {//setiap kotak diisi value,weight, and condition
+                                 int value=Integer.parseInt(Character.toString(snake.charAt(i)));//semua kotak dianggap tidak mempunyai cahaya saat pertama kali
+                                 listOfItems.add(new Item(value, 0,0));
+                              }
+                           
+                           
+                } catch (FileNotFoundException e) { e.printStackTrace();}//handle jika tidak ada file yg bernama input.txt keluarkan errorr 
+             
+                for (int ct=1;ct<=loop;ct++) {//for sebanyak loop kali
+                long seed = init.nextLong();//inisialisasi seed
+                Random gen = new Random(seed);//seed dimasukan kedalam random agar mempunyai patokan
+                int totalGeneration=0, maxPopulationSize=0;// board ukuran puzzle, total generasi dari genetik, maksimum populasi yg dibuat
+                double crossoverRate=0.0, mutationRate=0.0, elitismPct=0.0;//persenan crossover,mutas,dan elitism
                 try {//handle try untuk file bernama param.txt
 	        	sc = new Scanner(new File("param.txt"));//scan param.txt
 	        	totalGeneration = sc.nextInt();//generasi total yg akan dilakukan
