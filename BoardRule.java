@@ -280,25 +280,26 @@ public class BoardRule {
                     headxtemp=headxtemp;
                     headytemp=headytemp-1;
                     if(rule==false){
-                        score=score-1000;
-                        break;
+                       /*  score=score-1000;
+                        break; */
+                        return score;
                     }
                     else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
-                         score=score+100;
+                       /*   score=score+100; */
                     }
                     else{
-                        rule=false;
-                        score=score-1000;
+                       /*  rule=false;
+                        score=score-1000; */
                         
-                       // return score;
+                        return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                        rule=false;
-                        score=score-1000;
-                 //   return score;
+                       /*  rule=false;
+                        score=score-1000; */
+                    return score;
                 }
                 
                 //bot
@@ -307,24 +308,25 @@ public class BoardRule {
                     headxtemp=headxtemp;
                     headytemp=headytemp+1;
                     if(rule==false){
-                        score=score-1000;
-                        break;
+                     /*    score=score-1000;
+                        break; */
+                        return score;
                     }
                     else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
-                         score=score+100;
+                        // score=score+100;
                    }
                     else{
-                       rule=false;
-                        score=score-1000;
-                    //    return score;
+                      /*  rule=false;
+                        score=score-1000; */
+                        return score;
                    }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                rule=false;
-                        score=score-1000;
-                  ///  return score;
+               /*  rule=false;
+                        score=score-1000 */;
+                    return score;
                 }
                 
                 //left
@@ -333,25 +335,26 @@ public class BoardRule {
                     headxtemp=headxtemp-1;
                     headytemp=headytemp;                  
                      if(rule==false){
-                        score=score-1000;
-                        break;
+                        /* score=score-1000;
+                        break; */
+                        return score;
                      }
                      else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
-                         score=score+100;
+                         //score=score+100;
                     }
                     else{
-                        rule=false;
-                        score=score-1000;
-                     //   return score;
+                        /* rule=false;
+                        score=score-1000; */
+                        return score;
                     }
                    
                      }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                    score=score-1000;
-                        break;
-                    //return score;
+                    /* score=score-1000;
+                        break; */
+                    return score;
                 }
                 
                 //right
@@ -360,29 +363,31 @@ public class BoardRule {
                     headxtemp=headxtemp+1;
                     headytemp=headytemp;
                      if(rule==false){
-                        score=score-1000;
-                        break;
+                       /*  score=score-1000;
+                        break; */
+                        return score;
                      }
                      else if(snake[headxtemp][headytemp]==0){
                         snake[headxtemp][headytemp]=listOfItems.get(i-1).value;
-                        score=score+100;
+                       /*  score=score+100; */
                     }
                     else{
-                     rule=false;
-                        score=score-1000;
-                     //    return score;
+                     /* rule=false;
+                        score=score-1000; */
+                        return score;
                     }
                 }
                 }
                 catch(ArrayIndexOutOfBoundsException exception){
-                   rule=false;
-                        score=score-1000;
-                   //  return score;
+                  // rule=false;
+                       // score=score-1000;
+                     return score;
                 }
                 
+                score=score+addWeight(listOfItems,snake,chromosome,headxtemp,headytemp,secVal,row*row);
             }
             
-            score=score+addWeight(listOfItems,snake,chromosome,headx,heady,secVal,row*row);
+           score=score+addWeight(listOfItems,snake,chromosome,headx,heady,secVal,row*row);
             
             //System.out.println(score);
             return score;
@@ -418,149 +423,35 @@ public class BoardRule {
             }
         }
         return score; */
-               int row=snake.length-1;
-            
-             int headxtemp=headx;
-             int headytemp=heady;
-             int total=0;
-            
-             for(int i=2;i<chromosome.length();i++){
-                int match=0;
-                int x=headx;
-                int y=heady;
-                 
-                if(Character.toString(chromosome.charAt(i)).equals("U")){
-                   try{
-                    if(snake[headxtemp][headytemp-row]==snake[headxtemp][headytemp])//atas
+                 int match=0;
+                 try{   
+                    if(snake[headx][heady-1]==snake[headx][heady])//atas
                         match++;
                     }catch(ArrayIndexOutOfBoundsException exception){
                         
                     }
                     
                     try{
-                    if(snake[headxtemp][headytemp+row]==snake[headxtemp][headytemp])//bawah
+                    if(snake[headx][heady+1]==snake[headx][heady])//bawah
                         match++;
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
                     try{
-                    if(snake[headxtemp][headytemp-1]==snake[headxtemp][headytemp])//kiri
+                    if(snake[headx-1][heady]==snake[headx][heady])//kiri
                         match++;
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
                     try{
-                    if(snake[headxtemp][headytemp+1]==snake[headxtemp][headytemp])//kanan
+                    if(snake[headx+1][heady]==snake[headx][heady])//kanan
                         match++;
                     }catch(ArrayIndexOutOfBoundsException exception){
                     
                     }
-                    headxtemp=headxtemp;
-                    headytemp=headytemp-1; 
-                }
-                    
-                if(Character.toString(chromosome.charAt(i)).equals("D")){
-                    try{
-                    if(snake[headxtemp][headytemp-row]==snake[headxtemp][headytemp])//atas
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    
-                    try{
-                    if(snake[headxtemp][headytemp+row]==snake[headxtemp][headytemp])//bawah
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp-1]==snake[headxtemp][headytemp])//kiri
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp+1]==snake[headxtemp][headytemp])//kanan
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    headxtemp=headxtemp;
-                    headytemp=headytemp+1;                   
-                    
-                    }
-                if(Character.toString(chromosome.charAt(i)).equals("L")){
-                   try{
-                    if(snake[headxtemp][headytemp-row]==snake[headxtemp][headytemp])//atas
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    
-                    try{
-                    if(snake[headxtemp][headytemp+row]==snake[headxtemp][headytemp])//bawah
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp-1]==snake[headxtemp][headytemp])//kiri
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp+1]==snake[headxtemp][headytemp])//kanan
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    headxtemp=headxtemp-1;
-                    headytemp=headytemp;                   
-                    
-                   }
-                if(Character.toString(chromosome.charAt(i)).equals("R")){
-                    
-                    try{
-                    if(snake[headxtemp][headytemp-row]==snake[headxtemp][headytemp])//atas
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    
-                    try{
-                    if(snake[headxtemp][headytemp+row]==snake[headxtemp][headytemp])//bawah
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp-1]==snake[headxtemp][headytemp])//kiri
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    try{
-                    if(snake[headxtemp][headytemp+1]==snake[headxtemp][headytemp])//kanan
-                        match++;
-                    }catch(ArrayIndexOutOfBoundsException exception){
-                    
-                    }
-                    headxtemp=headxtemp+1;
-                    headytemp=headytemp;                   
-                    
-                     
-                    }
-                
-                total=total+(int)Math.pow(snake[x][y], match+1);
-                x=headxtemp;
-                y=headytemp;
-
-            }
-             
-             
+            int total=(int)Math.pow(snake[headx][heady], match+1);
              return total; 
-         }
+            }
          
           
         

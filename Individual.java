@@ -50,7 +50,7 @@ public class Individual  implements Comparable<Individual>{//implement comparabl
     public void doMutation() {//mutasi pilih random kotak dan ditaro lampu atau hilangkan lampu
         int ind1 = MyRand.nextInt(2,this.chromosome.length()-1);//pilih lenght yang di random
         StringBuilder stringChange = new StringBuilder(this.chromosome);//string builder agar bisa ganti karakter pada string
-        String [] move= {"U","B","L","R"};
+        String [] move= {"U","D","L","R"};
         Character ranchar=move[this.MyRand.nextInt(move.length)].charAt(0);
         stringChange.setCharAt(ind1, ranchar);   //ditambahkan lampu
         this.chromosome=stringChange.toString();//choromosome diganti dengan yg baru
