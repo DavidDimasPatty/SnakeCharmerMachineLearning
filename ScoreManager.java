@@ -1,13 +1,6 @@
 import java.util.*;
 public class ScoreManager {
-    //Ranges
-    private static  int minSize = 7, maxSize = 49;
-    private static final int minNumValues = 2, maxNumValues = 8;
-    private static final int minValue = 2;
-
-    //Inputs
     private int size;
-    private int numValues;
     private String snake;
 
     //Constants 
@@ -22,10 +15,6 @@ public class ScoreManager {
     //Output
     private String solution;
 
-    private String Score = "0";
-    private int headx;
-    private int heady;
-    private String seed_ml="0";
 
     //SCORE
     private int score = 0;
@@ -40,8 +29,6 @@ public class ScoreManager {
         init();
         int x = Integer.parseInt(Character.toString(this.solution.charAt(0)));
         int y = Integer.parseInt(Character.toString(this.solution.charAt(1)));
-        this.headx = x;
-        this.heady = y;
         this.solution = this.solution.substring(2, this.solution.length());
         this.grid[y][x] = this.snake.charAt(0);
         int i;

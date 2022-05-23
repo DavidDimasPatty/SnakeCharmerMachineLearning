@@ -16,15 +16,15 @@ public class Individual  implements Comparable<Individual>{//implement comparabl
     public int fitness;//fitness dari masing-masing individual
     public Random MyRand;//random yang dipanggil dari kelas main
     public double parentProbability;//kemungkinan suatu individual menjadi parent
-    public int secValue;
+    public String snake;
 
-    public Individual(Random MyRand,int board,int i,ArrayList<Item> listOfItems,int secValue) {//konstruktor
+    public Individual(Random MyRand,int board,int i,ArrayList<Item> listOfItems,String snake) {//konstruktor
         this.MyRand = MyRand;//random dari kelas main
          BoardRule rule=new BoardRule(this.MyRand);//memanggil kelas boardrule untuk membuat chromosome
         this.chromosome=rule.Move(this.MyRand, board, i, listOfItems);//kromosom diisi dengan lampu lampu
         this.fitness = 0;//fitness dari masing masing individual
         this.parentProbability = 0;//kemungkinan suatu individual menjadi parent
-        this.secValue=secValue;
+        this.snake=snake;
     }
 
     public Individual(Random MyRand, String chromosome) {//konstruktor 
@@ -34,12 +34,9 @@ public class Individual  implements Comparable<Individual>{//implement comparabl
         this.parentProbability = 0;//kemungkinan suatu individual menjadi parent
     }
 
-    public int setFitness(ArrayList<Item> listOfItems,int board) {//set fitness masing masing individual
-        int row=(int)Math.sqrt(board);//row dan colum dari board
-        int headX=Integer.parseInt(Character.toString(this.chromosome.charAt(0)));
-        int headY=Integer.parseInt(Character.toString(this.chromosome.charAt(1)));
+    public int setFitness(ArrayList<Item> listOfItems,int board,String snakes) {//set fitness masing masing individual
         BoardRule rule=new BoardRule(this.MyRand);//memanggil kelas boardrule untuk melakukan operasi 
-        this.fitness=rule.Score(listOfItems, row-1,this.chromosome, headX, headY, this.secValue);
+        this.fitness=rule.Score(this.chromosome, snakes);
         //System.out.println(this.fitness);
         return this.fitness;//fitness dari individual di return
         

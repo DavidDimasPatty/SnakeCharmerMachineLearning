@@ -241,9 +241,8 @@ public class BoardRule {
         return res;
     }
     
-    public int Score(ArrayList<Item> listOfItems,int row,String chromosome,int headx,int heady,int secVal){ // method untuk menambahkan cahaya pada kotak
-        
-        ScoreManager sm = new ScoreManager(chromosome, "3444433322344332432434424422324243233232232424424");
+    public int Score(String chromosome,String snake){ // method untuk menambahkan cahaya pada kotak
+        ScoreManager sm = new ScoreManager(chromosome, snake);
         int score = sm.calculate();
         
         return score;

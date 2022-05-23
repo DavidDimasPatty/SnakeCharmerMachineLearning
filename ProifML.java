@@ -67,10 +67,7 @@ public class ProifML {
                              int value=Integer.parseInt(Character.toString(snake.charAt(i)));//semua kotak dianggap tidak mempunyai cahaya saat pertama kali
                              listOfItems.add(new Item(value, 0,0));
                           }
-                        Target target=new Target(listOfItems,board,secVal);//memanggil kelas target untuk menghitung maksimal cahaya yg diperlukan untuk menghitung fitness
-                        target_res=target.max_Light(listOfItems, maxCapacity,secVal);//memanggil kelas target untuk mendapatkan hasil dari method max_light
-                        
-                        //System.out.println(listOfItems.size());
+                       
                        
 	        } catch (FileNotFoundException e) { e.printStackTrace();}//handle jika tidak ada file yg bernama input.txt keluarkan errorr 
 	      
@@ -85,8 +82,8 @@ public class ProifML {
                         
 	        } catch (FileNotFoundException e) { e.printStackTrace();}//handle jika tidak ada file bernama param.txt
 		   
-                SnakeCharmer hp = new SnakeCharmer(gen,totalGeneration,maxPopulationSize,elitismPct, crossoverRate,mutationRate, listOfItems, board,secVal);//memanggil kelas hikari untuk menjalankan algoritma genetik
-	        Individual rhp = hp.run();//memanggil kelas run untuk menjalankan algoritma genetik isinya di masukan ke individu
+                SnakeCharmer hp = new SnakeCharmer(gen,totalGeneration,maxPopulationSize,elitismPct, crossoverRate,mutationRate, listOfItems, board,snake);//memanggil kelas hikari untuk menjalankan algoritma genetik
+	            Individual rhp = hp.run();//memanggil kelas run untuk menjalankan algoritma genetik isinya di masukan ke individu
                
                 if(rhptemp<rhp.fitness){
                     best_chromosome=rhp.chromosome;

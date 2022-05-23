@@ -20,9 +20,9 @@ public class Population {
     int Board;//banyaknya kotak pada puzzle
     int jumlahRank=0;//variabel untuk menjumlah rank
     Random MyRand;//variabel random dari kelas main
-    int secVal;
+    public String snake;
 
-    public Population(Random MyRand, ArrayList<Item> listOfItems,int Board,int maxPopulationSize, double elitismPct,int secVal ) {//konsstruktor kelas populasi
+    public Population(Random MyRand, ArrayList<Item> listOfItems,int Board,int maxPopulationSize, double elitismPct,String snake) {//konsstruktor kelas populasi
         this.MyRand = MyRand;//variabel random dari kelas main
         this.maxPopulationSize = maxPopulationSize;//variabel max population size untuk konstruktor
         this.population = new ArrayList<Individual>();//variabel populasi yg mengandung array list ssebagai konstruktor
@@ -32,7 +32,7 @@ public class Population {
         for (int i=1;i<=this.maxPopulationSize;i++) {
             this.jumlahRank = this.jumlahRank + i;
         }//buat rank untuk melakukan crossover, populasi dll
-        this.secVal=secVal;
+        this.snake=snake;
     }
 
     
@@ -48,7 +48,7 @@ public class Population {
       
       
     public Population Elitism() {//method untuk mendapatkan populasi baru dengan elitism
-        Population newPop = new Population(this.MyRand, this.listOfItems,this.Board,this.populationSize, this.elitismPct,this.secVal);//memanggil kelas populasi 
+        Population newPop = new Population(this.MyRand, this.listOfItems,this.Board,this.populationSize, this.elitismPct,this.snake);//memanggil kelas populasi 
         int n = (int)(this.elitismPct * this.maxPopulationSize);//persentase elitism dikali dengan size maximal dari populasi
         for (int i=0;i<n;i++) {//untuk setiap populasi baru dengan size n
             boolean res = newPop.addIndividual(this.population.get(i));//tambahkan semua individu baru pada populasi
@@ -58,14 +58,14 @@ public class Population {
     
     public void randomPopulation() {//buat individu untuk populasi
         for (int i=0;i<this.maxPopulationSize;i++) {//membuat individu sebanyak maxpipulationsize
-            this.addIndividual(new Individual(this.MyRand,Board,i,listOfItems,this.secVal));//memanggil method add individual untuk meambahkan individu baru
+            this.addIndividual(new Individual(this.MyRand,Board,i,listOfItems,this.snake));//memanggil method add individual untuk meambahkan individu baru
         }
     }
 
 
     public void hitungFitness() {//menghitung semua fitness pada setiap individu di populasi
         for (int i=0;i<this.populationSize;i++) {//untuk setiap individu pada populasi
-             ((Individual)this.population.get(i)).setFitness(listOfItems, Board);//set fitness untuk setiap individu
+             ((Individual)this.population.get(i)).setFitness(listOfItems, Board,this.snake);//set fitness untuk setiap individu
            }
         this.population.sort((idv1,idv2) -> idv1.compareTo(idv2));//sort fitness dari sretiap individu menjadi yg terbesar
        

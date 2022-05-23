@@ -21,10 +21,10 @@ public class SnakeCharmer {
     public ArrayList<Item> listOfItems;//list dari item untuk dilempar ke kelas population
     public Individual final_res;//individual terbaik
     int Board;//jumlah kotak dari board
-    public int secVal;
+    public String snake;
 
     public SnakeCharmer(Random MyRand, int totalGeneration, int maxPopulationSize, double elitismPct,
-        double crossoverRate, double mutationRate, ArrayList<Item> listOfItems, int Board,int secVal) {//konstruktor kelas hikari
+        double crossoverRate, double mutationRate, ArrayList<Item> listOfItems, int Board,String snake) {//konstruktor kelas hikari
         this.MyRand = MyRand;//random yg diambil dari kelas main
         this.totalGeneration = totalGeneration;//generasi total yg diambil dari kelas main
         this.maxPopulationSize = maxPopulationSize;//populasi maksimal yg dilakukan pada setiap iterasi
@@ -33,12 +33,12 @@ public class SnakeCharmer {
         this.mutationRate = mutationRate;//mutasi rate dari kelas main
         this.listOfItems = listOfItems;//list yg nantinya akan digunakan ke kelas population
         this.Board = Board;//jumlah kotak dari board
-        this.secVal=secVal;
+        this.snake=snake;
     }
 
     public Individual run() {//method untuk melakukan algoritma genetik
         int gen = 1;//variabel generasi untuk melakukan loop
-        Population currentPop = new Population(MyRand,this.listOfItems, this.Board, this.maxPopulationSize, this.elitismPct,this.secVal);//memanggil kelas populasi
+        Population currentPop = new Population(MyRand,this.listOfItems, this.Board, this.maxPopulationSize, this.elitismPct,this.snake);//memanggil kelas populasi
         currentPop.randomPopulation();//membuat populasi secara random
         currentPop.hitungFitness();//menghitung fitness setiap individu pada populasi
           while (stop(gen)==0) {//memanggil method terminate untuk memberhentikan program jika tidak ada jawaban yg menyerupai total maksimal cahaya
