@@ -58,8 +58,8 @@ public class ScoreManager {
             } else {
                 break;
             }
-            if (!inGrid(y, x)) break;
-            if (this.grid[y][x] != '.') break; 
+            if (!inGrid(y, x)) return score;
+            if (this.grid[y][x] != '.') return score; 
             this.grid[y][x] = this.snake.charAt(i+1);
             //System.out.println(this.snake.charAt(this.snake.length() - (i+2) ));
         }
@@ -78,6 +78,7 @@ public class ScoreManager {
                     cnt[m] = cnt[m] + 1;
                     score += (int)Math.pow((this.grid[y][x] - 48), (m + 1));
                 }
+             
             }
         }
         return score;
