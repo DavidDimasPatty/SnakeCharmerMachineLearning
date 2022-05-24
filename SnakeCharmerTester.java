@@ -104,7 +104,10 @@ public class SnakeCharmerTester extends MarathonVis {
         this.heady = y;
         this.solution = this.solution.substring(2, this.solution.length());
         this.grid[y][x] = this.snake.charAt(0);
-        System.out.println("move:"+this.snake);
+        System.out.println("-----HEAD-----");
+        System.out.println("x:"+x);
+        System.out.println("y:"+y);
+        System.out.println("snake:"+this.snake); 
         int i;
         for (i = 0; i < this.solution.length(); i++) {
             char c = this.solution.charAt(i);
