@@ -22,7 +22,7 @@ public class ScoreManager {
     public ScoreManager(String ret, String snake) {
         this.solution = ret;
         this.snake = snake;
-        this.size = snake.length();
+        this.size = (int)Math.sqrt(snake.length());
     }
 
     public int calculate() {
