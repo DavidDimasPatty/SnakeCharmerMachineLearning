@@ -107,6 +107,8 @@ public class SnakeCharmerTester extends MarathonVis {
         System.out.println("-----HEAD-----");
         System.out.println("x:"+x);
         System.out.println("y:"+y);
+        System.out.println("Number of steps:"+this.solution.length());
+        System.out.println("Solution:"+this.solution);
         System.out.println("snake:"+this.snake); 
         int i;
         for (i = 0; i < this.solution.length(); i++) {
