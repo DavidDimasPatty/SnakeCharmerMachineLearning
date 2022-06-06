@@ -36,8 +36,8 @@ public class ProifML {
 //value=v^(m+1)
   public void start() throws IOException{ //method main
            	Scanner sc = new Scanner(System.in);//inilisasi input
-   		int loop = sc.nextInt();//input untuk melakukan seberapa banyak iterasi yg diperlukan
-   		Random init = new Random();//inilisasi variabel random untuk melakukan random keseluruhan
+            int loop = sc.nextInt();//input untuk melakukan seberapa banyak iterasi yg diperlukan
+            Random init = new Random();//inilisasi variabel random untuk melakukan random keseluruhan
                 String final_chromosome="Result: ";//string yang nantinya berisi chromosome terbaik
                 int temp_res=-999;//patokan fitness yang paling buruk
                 long seed_ans=0;//variabel seeds yg nantinya akan diisi dengan seeds random untuk hasil
