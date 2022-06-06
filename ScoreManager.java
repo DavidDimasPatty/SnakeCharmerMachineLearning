@@ -45,8 +45,8 @@ public class ScoreManager {
             } else {
                 break;
             }
-            if (!inGrid(y, x)) return score;
-            if (this.grid[y][x] != '.') return score; 
+            if (!inGrid(y, x)) break;
+            if (this.grid[y][x] != '.') break; 
             this.grid[y][x] = this.snake.charAt(i+1);
             //System.out.println(this.snake.charAt(this.snake.length() - (i+2) ));
         }
@@ -74,14 +74,14 @@ public class ScoreManager {
     
 
     public boolean inGrid(int x, int y) {
-        return x >= 0 && x < size && y >= 0 && y < size;
+        return x >= 0 && x < this.size && y >= 0 && y < this.size;
     }
 
     public void init() {
-        grid = new char[size][size];
+        grid = new char[this.size][this.size];
         for (int i = 0; i < size; i++) {
             Arrays.fill(grid[i], empty);
         }
-        matches = new int[size][size];
+        matches = new int[this.size][this.size];
     }
 }

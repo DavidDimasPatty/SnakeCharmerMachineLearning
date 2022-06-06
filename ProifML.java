@@ -44,7 +44,7 @@ public class ProifML {
                 int fitness_res=0;//hasil akhir fitness yang nanti akan dibandingkan
                 int row=0;//baris dan kolom dari board yg pastinya akar dari board
                 int target_res=0;//menyimpan hasil paling optimal
-                int rhptemp=0;
+                int rhptemp=-1;
                 String snake="";
                 String best_chromosome="";
                 long best_seed=0;
