@@ -13,8 +13,8 @@ public class BoardRule {
         int row=(int)Math.sqrt(board);
         
         String [] move= {"U","D","L","R"};
-        int x=this.MyRand.nextInt(row-1);
-        int y=this.MyRand.nextInt(row-1);
+        int x=(row-1)/2;
+        int y=(row-1)/2;
         int tempx=x;
         int tempy=y;
         int [][] snake=new int [row][row];
