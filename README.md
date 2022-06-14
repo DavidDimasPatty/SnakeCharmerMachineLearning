@@ -12,11 +12,13 @@
 
 ## How To Run Project
 
-- git clone this project
-- open command windows in directory project
+- open cmd in directory project
 - javac SnakeCharmerTester.java
 - java SnakeCharmerTester.java
-- input loop
+- input your loop(ex: 100)
 
+
+## Change Input
+You can change the size of the board and the number of different section values in input.txt file
 
 
