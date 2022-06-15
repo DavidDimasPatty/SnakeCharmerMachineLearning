@@ -107,9 +107,11 @@ public class SnakeCharmerTester extends MarathonVis {
         System.out.println("-----HEAD-----");
         System.out.println("x:"+x);
         System.out.println("y:"+y);
-        System.out.println("Number of steps:"+this.solution.length());
+        System.out.println("Number of steps:"+(this.solution.length()+1));
         System.out.println("Solution:"+this.solution);
-        System.out.println("snake:"+this.snake); 
+        StringBuffer sbr = new StringBuffer(this.snake);
+        String snakes=sbr.reverse().toString();
+        System.out.println("snake:"+snakes); 
         int i;
         for (i = 0; i < this.solution.length(); i++) {
             char c = this.solution.charAt(i);

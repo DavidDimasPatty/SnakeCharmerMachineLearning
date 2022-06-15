@@ -57,12 +57,14 @@ public class ProifML {
                             row=maxCapacity;//variabel row diisi maxcapacity
                             board=maxCapacity*maxCapacity;//banyaknya kotak yg ada dalam puzzle
                             secVal = sc.nextInt()+1;//section value setiap kotak
-                              for (int i=0;i<board;i++){
+                            /*   for (int i=0;i<board;i++){
                                 snake=snake+Integer.toString(init.nextInt(secVal-1) + 2);
-                            }   
-                            System.out.print(snake);
-                            //snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
-                            
+                            }    */
+                            snake=sc.next();//kotak yg hitam memliki weight yg disekitar kotak tersebut harus ada lamp
+                            StringBuffer sbr = new StringBuffer(snake);
+                            // To reverse the string
+                            sbr.reverse();
+                            snake=sbr.toString();
                             for (int i=0;i<board;i++) {//setiap kotak diisi value,weight, and condition
                                  int value=Integer.parseInt(Character.toString(snake.charAt(i)));//semua kotak dianggap tidak mempunyai cahaya saat pertama kali
                                  listOfItems.add(new Item(value, 0,0));
